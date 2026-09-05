@@ -27,9 +27,14 @@ jobs:
           cp index.html style.css site.js icon.png castle.png heading.ttf body.ttf *.txt _site/
           cp -R play _site/play
           touch _site/.nojekyll
-          if test -f latest.json; then
-            cp latest.json _site/
-            tag="$(python3 -c 'import json; print(json.load(open("latest.json"))["tag"])')"
+          if test -f latest.json; then cp latest.json _site/; fi
+          build_manifest='latest.json'
+          if test -f web-build.json; then
+            build_manifest='web-build.json'
+            cp web-build.json _site/
+          fi
+          if test -f "$build_manifest"; then
+            tag="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["tag"])' "$build_manifest")"
             gh release download "$tag" --repo "$GITHUB_REPOSITORY" --pattern gilts-goblins-web.zip --dir "$RUNNER_TEMP"
             unzip -q -o "$RUNNER_TEMP/gilts-goblins-web.zip" -d _site/play
           fi

@@ -4,8 +4,12 @@ document.querySelector('#fullscreen').onclick = () => document.querySelector('#f
 start.onclick = async () => {
   start.disabled = true; status.textContent = 'Loading the kingdom…';
   try {
-    const {default: init} = await import('./game.js');
-    await init();
+    const metadata = await fetch('./build.json', {cache: 'no-store'});
+    if (!metadata.ok) throw new Error('Build metadata is unavailable');
+    const {cache_key} = await metadata.json();
+    if (!/^[a-f0-9]{20}$/.test(cache_key)) throw new Error('Invalid build metadata');
+    const {default: init} = await import(`./game.js?v=${cache_key}`);
+    await init({module_or_path: `./game_bg.wasm?v=${cache_key}`});
     document.querySelector('#intro').remove();
     document.querySelector('#game').focus();
   } catch (error) {
