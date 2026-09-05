@@ -1,0 +1,41 @@
+name: Publish website
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Assemble site and released browser game
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir _site
+          cp index.html style.css site.js icon.png castle.png heading.ttf body.ttf *.txt _site/
+          cp -R play _site/play
+          touch _site/.nojekyll
+          if test -f latest.json; then
+            cp latest.json _site/
+            tag="$(python3 -c 'import json; print(json.load(open("latest.json"))["tag"])')"
+            gh release download "$tag" --repo "$GITHUB_REPOSITORY" --pattern gilts-goblins-web.zip --dir "$RUNNER_TEMP"
+            unzip -q -o "$RUNNER_TEMP/gilts-goblins-web.zip" -d _site/play
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+          retention-days: 1
+      - uses: actions/deploy-pages@v4
+        id: deployment
