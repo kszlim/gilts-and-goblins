@@ -1,10 +1,12 @@
 {
-  "tag": "web-preview-20260905-205856-c742def983",
-  "date": "2026-09-05T20:58:56.903543+00:00",
-  "source_commit": "c742def9837bf5cb03396dcbdd56179ce6640a39",
-  "cache_key": "d665c75f2455c32b8bb6",
+  "tag": "web-preview-20260906-054505-4ea1e338d3",
+  "date": "2026-09-06T05:45:05.988701+00:00",
+  "source_commit": "4ea1e338d317ec94c47d6e960fc976e8b101c1ed",
+  "packaging_commit": "52ed8798e74d293c09f0947c6e62e790991ff435",
+  "source_run_id": "34012756107",
+  "cache_key": "d0780732e9605db44680",
   "asset": "gilts-goblins-web.zip",
-  "size": 72543998,
-  "sha256": "421703042e4e36545e272e8fa3e195e742e7c957f7d52e2db1ef7223e09cf903",
-  "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/web-preview-20260905-205856-c742def983/gilts-goblins-web.zip"
+  "size": 78148108,
+  "sha256": "05d6222d18cb7e60bba5001db8bff909b311071c54e9e874e985049e3d83dcc8",
+  "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/web-preview-20260906-054505-4ea1e338d3/gilts-goblins-web.zip"
 }
