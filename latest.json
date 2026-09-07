@@ -1,44 +1,44 @@
 {
   "product": "Gilts & Goblins",
-  "tag": "nightly-20260906-060736-4ea1e338d3-1",
-  "date": "2026-09-06T06:07:38.173933+00:00",
-  "source_commit": "4ea1e338d317ec94c47d6e960fc976e8b101c1ed",
-  "packaging_commit": "52ed8798e74d293c09f0947c6e62e790991ff435",
-  "source_run_id": "34012756107",
+  "tag": "nightly-20260907-043925-94a7356ee5-1",
+  "date": "2026-09-07T04:39:26.747435+00:00",
+  "source_commit": "94a7356ee516ecc36ba38edb07684f87828b272c",
+  "packaging_commit": "94a7356ee516ecc36ba38edb07684f87828b272c",
+  "source_run_id": "34080192577",
   "windows_package_run_id": null,
-  "linux_build_run_id": "34014298731",
-  "android_package_commit": "fcdb36fab1c3f8ad50885ec7c7c922243401bc55",
-  "fingerprint": "2ab58d7f6f052c987bca34f398b1df4cfa9df6f60d0d89334fa9ed449f19c5ef",
+  "linux_build_run_id": null,
+  "android_package_commit": null,
+  "fingerprint": "444216539a65ba770efcdd1384b2207232ff0a76a5cd5156a4793f864913ef9e",
   "assets": [
     {
       "name": "gilts-goblins-android-arm64.apk",
-      "size": 162092394,
-      "sha256": "97f3362cffc64985cd6807d10417609c3146b33f6dd08b59b2a721f72d1ae66a",
-      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260906-060736-4ea1e338d3-1/gilts-goblins-android-arm64.apk"
+      "size": 164072927,
+      "sha256": "97e95f662a4b2d05ba46f655d925a52df022f79c6b425ae7e1a80c5fc09a1ba9",
+      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260907-043925-94a7356ee5-1/gilts-goblins-android-arm64.apk"
     },
     {
       "name": "gilts-goblins-linux-x86_64.AppImage",
-      "size": 93911544,
-      "sha256": "b7f27cddf6a9867f94206b059ff11ec320efe196e1e9754522ce40b423a635f7",
-      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260906-060736-4ea1e338d3-1/gilts-goblins-linux-x86_64.AppImage"
+      "size": 94112248,
+      "sha256": "3585e12c74a9e155e19ca50d652082c9197155e0fa331e02475457983e56cd86",
+      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260907-043925-94a7356ee5-1/gilts-goblins-linux-x86_64.AppImage"
     },
     {
       "name": "gilts-goblins-macos-arm64.zip",
-      "size": 92592605,
-      "sha256": "11228e74627d040240a356031e02d720ac6ee6d226164be6ec97126ee9e7e704",
-      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260906-060736-4ea1e338d3-1/gilts-goblins-macos-arm64.zip"
+      "size": 92820873,
+      "sha256": "23b8d33574f681f2c91591ada9470604ad9699255d2db755fee87da52df2940c",
+      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260907-043925-94a7356ee5-1/gilts-goblins-macos-arm64.zip"
     },
     {
       "name": "gilts-goblins-web.zip",
-      "size": 78148108,
-      "sha256": "05d6222d18cb7e60bba5001db8bff909b311071c54e9e874e985049e3d83dcc8",
-      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260906-060736-4ea1e338d3-1/gilts-goblins-web.zip"
+      "size": 78295581,
+      "sha256": "0a27e9a6976e0fc91f55a51674a566322eadf456909efc9b846aec352934c0b4",
+      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260907-043925-94a7356ee5-1/gilts-goblins-web.zip"
     },
     {
       "name": "gilts-goblins-windows-x86_64.zip",
-      "size": 93395430,
-      "sha256": "fe5dd78bc428d5af26c65a8f1868ca79f64ab35db143592b0526650737883d01",
-      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260906-060736-4ea1e338d3-1/gilts-goblins-windows-x86_64.zip"
+      "size": 93620183,
+      "sha256": "dd256f251abeb0cd452ab80e23ceba63702a2c8c7ce2281df0bbde16f6d956b5",
+      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260907-043925-94a7356ee5-1/gilts-goblins-windows-x86_64.zip"
     }
   ]
 }
