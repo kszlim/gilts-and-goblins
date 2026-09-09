@@ -1,46 +1,46 @@
 {
   "product": "Gilts & Goblins",
-  "tag": "nightly-20260909-173024-7522b1f78b-arc",
-  "date": "2026-09-09T17:30:25.492753+00:00",
-  "source_commit": "7522b1f78b6b6f35c2997399ae5d3751aacc1265",
-  "packaging_commit": "7522b1f78b6b6f35c2997399ae5d3751aacc1265",
-  "source_run_id": "34380161071",
-  "windows_package_run_id": "34380157659",
-  "linux_build_run_id": "34380161071",
-  "android_package_commit": "7522b1f78b6b6f35c2997399ae5d3751aacc1265",
+  "tag": "nightly-20260909-193357-8341794d08-arc",
+  "date": "2026-09-09T19:33:58.909613+00:00",
+  "source_commit": "8341794d08386f6f390f1ea2d5284a54a9564c20",
+  "packaging_commit": "8341794d08386f6f390f1ea2d5284a54a9564c20",
+  "source_run_id": null,
+  "windows_package_run_id": "34388771494",
+  "linux_build_run_id": null,
+  "android_package_commit": "8341794d08386f6f390f1ea2d5284a54a9564c20",
   "skipped_platforms": [
     "macos"
   ],
-  "validation_note": "Development preview. Package/startup checks passed; the historical funded-opener balance baseline fails after these repairs and already fails on the pre-fix control. Normal-start strategy optimization and held-out qualification remain unfinished. Physical Pixel frame pacing and a new Android release-device smoke are unmeasured.",
-  "arc_build_run_id": "34380157659",
-  "web_build_run_id": "34380157659",
-  "android_build_run_id": "34380161071",
-  "windows_smoke_run_id": "34381881196",
-  "fingerprint": "68f38c4552b0ccde1322f153c386e49b4ab2a91f3a2164ed0f04cb212654306e",
+  "validation_note": "Development preview; gameplay and tuning unchanged from0.1.2. Windows/web built on Vanquants ARC; Linux/Android recovered locally after private-hosted billing refusal. Exact Windows startup check: https://github.com/kszlim/gilts-and-goblins/actions/runs/34395365198. Historical balance-baseline failures and incomplete normal-start qualification remain disclosed. Physical Pixel frame pacing and a new Android device smoke remain unmeasured.",
+  "arc_build_run_id": "34388771494",
+  "web_build_run_id": "34388771494",
+  "android_build_run_id": null,
+  "windows_smoke_run_id": "34395365198",
+  "fingerprint": "8e5749d8fc349b846d3f407edb62875a204d7360357a5063d9c03647b7c055fb",
   "assets": [
     {
       "name": "gilts-goblins-android-arm64.apk",
-      "size": 157406091,
-      "sha256": "5aeb9db056b2a76580c5a9a3f5562c1ef92a4ca4d4555e30bd9a141521fd4440",
-      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260909-173024-7522b1f78b-arc/gilts-goblins-android-arm64.apk"
+      "size": 157407723,
+      "sha256": "dedcb9336485a4db4f81449f22c65b700ba1bc41282b4a4d02906344712e793a",
+      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260909-193357-8341794d08-arc/gilts-goblins-android-arm64.apk"
     },
     {
       "name": "gilts-goblins-linux-x86_64.AppImage",
-      "size": 97102328,
-      "sha256": "8bf0d57d49468f0f76b00197e8f322af84ba1b9d9716a72683efe919f890fe96",
-      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260909-173024-7522b1f78b-arc/gilts-goblins-linux-x86_64.AppImage"
+      "size": 97139192,
+      "sha256": "ee8fd718d1495c4227f317c28b62c582b714f855249e4b6cfbf943bcfdb7c98c",
+      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260909-193357-8341794d08-arc/gilts-goblins-linux-x86_64.AppImage"
     },
     {
       "name": "gilts-goblins-web.zip",
-      "size": 81219005,
-      "sha256": "3d7ad6a452da9bc7bc46fae558e506b10245a7d9ced98da5b46db2b0b6f4153f",
-      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260909-173024-7522b1f78b-arc/gilts-goblins-web.zip"
+      "size": 81219142,
+      "sha256": "0071ba29b24b061e0ee34797365288c177b492dbe730c4aadf20be088f15034a",
+      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260909-193357-8341794d08-arc/gilts-goblins-web.zip"
     },
     {
       "name": "gilts-goblins-windows-x86_64.zip",
-      "size": 96550328,
-      "sha256": "578d18882844c88ce1dc2458be15aafb8bb25e00a7dfabdcac8ef851ff51156d",
-      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260909-173024-7522b1f78b-arc/gilts-goblins-windows-x86_64.zip"
+      "size": 96551584,
+      "sha256": "61ade1f29a8b45b49fe0971058b6818a804c5361a27712608ff9c7ba2327ab73",
+      "url": "https://github.com/kszlim/gilts-and-goblins/releases/download/nightly-20260909-193357-8341794d08-arc/gilts-goblins-windows-x86_64.zip"
     }
   ]
 }
