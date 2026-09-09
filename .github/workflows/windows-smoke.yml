@@ -20,14 +20,21 @@ jobs:
       - name: Download and verify the exact draft package
         env:
           GH_TOKEN: ${{ github.token }}
+          PACKAGE_URL: ${{ secrets.WINDOWS_RELEASE_SMOKE_URL }}
           RELEASE_TAG: ${{ inputs.release_tag }}
           EXPECTED_SHA256: ${{ inputs.sha256 }}
         shell: pwsh
         run: |
           if ($env:RELEASE_TAG -notmatch '^nightly-[A-Za-z0-9-]+$') { throw 'Invalid draft tag' }
           if ($env:EXPECTED_SHA256 -notmatch '^[a-f0-9]{64}$') { throw 'Invalid checksum' }
-          gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern gilts-goblins-windows-x86_64.zip
-          if ($LASTEXITCODE -ne 0) { throw 'Draft download failed' }
+          if ($env:PACKAGE_URL) {
+            $uri = [Uri]$env:PACKAGE_URL
+            if ($uri.Scheme -ne 'https' -or $uri.Host -ne 'release-assets.githubusercontent.com') { throw 'Invalid signed asset host' }
+            Invoke-WebRequest -Uri $uri -OutFile gilts-goblins-windows-x86_64.zip
+          } else {
+            gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern gilts-goblins-windows-x86_64.zip
+            if ($LASTEXITCODE -ne 0) { throw 'Draft download failed' }
+          }
           $digest = (Get-FileHash gilts-goblins-windows-x86_64.zip -Algorithm SHA256).Hash.ToLower()
           if ($digest -ne $env:EXPECTED_SHA256) { throw 'Package digest mismatch' }
           Expand-Archive gilts-goblins-windows-x86_64.zip -DestinationPath package
