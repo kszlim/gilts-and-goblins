@@ -1,0 +1,65 @@
+name: Verify packaged Windows release
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Unpublished public-mirror draft containing the Windows ZIP
+        required: true
+        type: string
+      sha256:
+        description: Expected SHA-256 of the Windows ZIP
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: windows-2022
+    timeout-minutes: 10
+    steps:
+      - name: Download and verify the exact draft package
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          EXPECTED_SHA256: ${{ inputs.sha256 }}
+        shell: pwsh
+        run: |
+          if ($env:RELEASE_TAG -notmatch '^nightly-[A-Za-z0-9-]+$') { throw 'Invalid draft tag' }
+          if ($env:EXPECTED_SHA256 -notmatch '^[a-f0-9]{64}$') { throw 'Invalid checksum' }
+          gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern gilts-goblins-windows-x86_64.zip
+          if ($LASTEXITCODE -ne 0) { throw 'Draft download failed' }
+          $digest = (Get-FileHash gilts-goblins-windows-x86_64.zip -Algorithm SHA256).Hash.ToLower()
+          if ($digest -ne $env:EXPECTED_SHA256) { throw 'Package digest mismatch' }
+          Expand-Archive gilts-goblins-windows-x86_64.zip -DestinationPath package
+      - name: Launch the packaged game and capture the Windows desktop
+        shell: pwsh
+        run: |
+          $root = (Resolve-Path package/Gilts-Goblins).Path
+          $out = Join-Path $env:RUNNER_TEMP game-stdout.log
+          $err = Join-Path $env:RUNNER_TEMP game-stderr.log
+          $game = Start-Process (Join-Path $root gilts-goblins.exe) -WorkingDirectory $root -PassThru -RedirectStandardOutput $out -RedirectStandardError $err
+          try {
+            Start-Sleep -Seconds 25
+            $game.Refresh()
+            if ($game.HasExited) { Get-Content $out,$err; throw "Game exited with $($game.ExitCode)" }
+            $logs = (Get-Content $out,$err -Raw -ErrorAction SilentlyContinue) -join "`n"
+            if ($logs -match 'panicked at|failed to load|Encountered an I/O error') { throw $logs }
+            if ($logs -notmatch 'AdapterInfo|Creating new window') { throw 'No renderer/window startup evidence' }
+            Add-Type -AssemblyName System.Windows.Forms,System.Drawing
+            $bounds = [System.Windows.Forms.SystemInformation]::VirtualScreen
+            $image = New-Object System.Drawing.Bitmap $bounds.Width,$bounds.Height
+            $graphics = [System.Drawing.Graphics]::FromImage($image)
+            $graphics.CopyFromScreen($bounds.Left,$bounds.Top,0,0,$bounds.Size)
+            $image.Save((Join-Path $env:RUNNER_TEMP windows-game.png))
+            $graphics.Dispose(); $image.Dispose()
+          } finally {
+            if (-not $game.HasExited) { Stop-Process -Id $game.Id }
+          }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-release-smoke
+          path: |
+            ${{ runner.temp }}/game-*.log
+            ${{ runner.temp }}/windows-game.png
+          retention-days: 3
